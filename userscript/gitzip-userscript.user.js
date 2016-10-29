@@ -12,7 +12,13 @@
 // @run-at      document-idle
 // ==/UserScript==
 GitZip.registerCallback(inputFn, this);
-window.setTimeout(addButton, 1000);
+
+//fix for cached pages
+document.body.onclick = function () {
+    window.setTimeout(addButton, 1500);
+};
+
+addButton();
 
 function addButton() {
     if (!document.getElementById("downloadButton")) {
@@ -27,7 +33,7 @@ function addButton() {
 function inputFn(status, message, percent) {
     console.log("status: " + status, "; message: " + message + "; percent: " + percent + ";");
     if (status = "error") {
-
+        window.alert("Error: "+ message);
     }
 }
 
