@@ -8,7 +8,7 @@ addButtons();
 GitZip.registerCallback(inputFn, this);
 function addButtons() {
     //folder button
-    if (!document.getElementById("downloadButton")) {
+    if (!document.getElementsByClassName("select-menu get-repo-select-menu js-menu-container float-right select-menu-modal-right")[0]) {
         var downloadButton = '<div id="downloadButton" class="select-menu get-repo-select-menu js-menu-container float-right select-menu-modal-right"><button class="btn btn-sm btn-primary" type="button" tabindex="0"><span>Download</span>  </button></div>';
         var container = document.getElementsByClassName("file-navigation")[0];
         container.innerHTML = downloadButton + container.innerHTML;
@@ -16,7 +16,9 @@ function addButtons() {
         downloadButtonElement.onclick = function () {
             startDownload(document.URL)
         };
-        //file buttons
+    }
+    //file buttons
+    if(!document.getElementById("downloadButton0") && !document.getElementById("downloadButton1"))
         var entries = document.getElementsByClassName("files js-navigation-container js-active-navigation-container")[0].getElementsByClassName("js-navigation-item");
         for (var i = 0; i < entries.length; i++) {
             var tr = entries[i];
@@ -27,7 +29,6 @@ function addButtons() {
                 };
             }
         }
-    }
 }
 
 function startDownload(url) {
