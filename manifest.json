@@ -1,0 +1,30 @@
+{
+
+  "manifest_version": 2,
+  "name": "Github downloader",
+  "version": "1.0",
+
+  "description": "Adds a download buttons to github.com repositories to zip & download folders or files",
+
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "permissions": ["storage"],
+
+  "content_scripts": [{
+    "matches": ["https://github.com/*/*"],
+    "js": ["gitzip/jquery-1.11.3.min.js", "gitzip/FileSaver.min.js", "gitzip/jszip.min.js", "gitzip/API.js", "gitzip-button.js"]
+  }],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "options_ui": {
+    "page": "options.html"
+  }
+
+
+
+}
